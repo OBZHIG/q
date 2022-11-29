@@ -1,22 +1,26 @@
 import sqlite3
 
+try:
+    conn = sqlite3.connect('slova.db')
+    cur = conn.cursor()
 
-conn = sqlite3.connect('slova.db')
-cur = conn.cursor()
+    cur.execute("""CREATE TABLE IF NOT EXISTS words(
+       User_id INT,
+       Word_ENG TEXT,
+       Word_RU TEXT,
+       True_straick INT);
+    """)
 
-cur.execute("""CREATE TABLE IF NOT EXISTS words(
-   User_id INT,
-   Word_ENG TEXT,
-   Word_RU TEXT,
-   True_straick INT);
-""")
+    cur.execute("""CREATE TABLE IF NOT EXISTS users(
+       TG_id INT,
+       State TEXT,
+       Current_word INT);
+    """)
 
-cur.execute("""CREATE TABLE IF NOT EXISTS users(
-   TG_id INT,
-   State TEXT,
-   Current_word INT);
-""")
-
-conn.commit()
-conn.close() #закрываем соединение с базой данных
+    conn.commit()
+    conn.close() #закрываем соединение с базой данных
+except:
+    print("egor")
+else:
+    print("succes")
 

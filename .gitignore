@@ -1,3 +1,4 @@
 venv/
 .idea/
 slova.db
+.env

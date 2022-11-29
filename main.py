@@ -1,12 +1,19 @@
 from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
-
+from dotenv import load_dotenv
+from pathlib import Path
 
 import sqlite3
 import random
+import os
 
-bot = Bot(token="5302161624:AAEybahOADvKeHUEufzo6unoQ51u1VJ4z4Q")
+load_dotenv()
+env_path = Path('.')/'.env'
+load_dotenv(dotenv_path=env_path)
+TOKEN = os.getenv("TOKEN")
+
+bot = Bot(token=TOKEN)
 dp = Dispatcher(bot)
 
 
